@@ -9,7 +9,7 @@ const HastaListe = ({ hastalar, setHastalar }) => {
                     <div >
                         <div className={hasta.bittiMi ? "trueBittiStil" : "falseBitmediStil"}
                             key={hasta.id}>
-                            onDoubleClick={() => setHastalar(hastalar.map((i) => i.id === hasta.id ? {} : i))}
+                            onDoubleClick={() => setHastalar(hastalar.map((i) => i.id === hasta.id ? { ...i, bittiMi: !i.bittiMi } : i))}
                             <div>
                                 <h2>{hasta.text} </h2>
                                 <h4>{hasta.day} </h4>
