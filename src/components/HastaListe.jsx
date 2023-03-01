@@ -6,10 +6,17 @@ const HastaListe = ({ hastalar, setHastalar }) => {
             {hastalar.map((hasta) => {
 
                 return (
-                    <div >
-                        <div className={hasta.bittiMi ? "trueBittiStil" : "falseBitmediStil"}
+                    <div>
+                        <div
+                            className={hasta.bittiMi ? "trueBittiStil" : "falseBitmediStil"}
                             key={hasta.id}
-                            onDoubleClick={() => setHastalar(hastalar.map((i) => i.id === hasta.id ? { ...i, bittiMi: !i.bittiMi } : i))}
+                            onDoubleClick={() =>
+                                setHastalar(
+                                    hastalar.map((i) =>
+                                        i.id === hasta.id ? { ...i, bittiMi: !i.bittiMi } : i
+                                    )
+                                )
+                            }
                         >
                             <div>
                                 <h2>{hasta.text} </h2>
@@ -17,11 +24,13 @@ const HastaListe = ({ hastalar, setHastalar }) => {
                                 <h3>{hasta.doktorum} </h3>
                             </div>
 
-                            <FaTimesCircle style={{ color: "red" }}
+                            <FaTimesCircle
+                                style={{ color: "red" }}
                                 onClick={() =>
-                                    setHastalar(hastalar.filter((insan) => insan.id !== hasta.id))}
-
+                                    setHastalar(hastalar.filter((insan) => insan.id !== hasta.id))
+                                }
                             />
+
                         </div>
                     </div>
                 );

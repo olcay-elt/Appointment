@@ -36,12 +36,14 @@ const Home = () => {
 
     const [buton, setButon] = useState(true)
 
-    const doktorClick = () => {
+    const doktorClick = (id) => {
         setButon(!buton)
+        // console.log([doktorlar.filter((i) => i.id === id)][0]);
+        setDoktorlar([doktorlar.filter((i) => i.id === id)][0]);
     }
 
     return (
-        <div>
+        <div style={{ display: buton ? "block" : "flex" }}>
             <div>
                 <header className="header">
                     <h1>HOSPİTAL</h1>
@@ -55,7 +57,7 @@ const Home = () => {
                                     height="150px"
                                     className="btn"
                                     style={{ backgroundColor: buton ? "aqua" : "lightgreen" }}
-                                    onClick={() => doktorClick()}
+                                    onClick={() => doktorClick(dr.id)}
                                 />
                                 <h4
                                     style={{
@@ -70,7 +72,11 @@ const Home = () => {
                     </div>
                 </header>
 
-                {buton === false && <HastaEkle />}
+                {buton === false && (
+                    <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />
+                )}
+
+
             </div>
 
             <HastaListe hastalar={hastalar} setHastalar={setHastalar} />

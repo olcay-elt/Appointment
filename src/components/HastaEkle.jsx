@@ -1,33 +1,56 @@
-const HastaEkle = () => {
-  return (
-    <div>
-      <form>
-        <div className="form-control">
-          <label htmlFor="text">Hasta Bilgileri</label>
+import { useState } from "react";
 
-          <input
-            id="text"
-            type="text"
-            placeholder="Add Name"
-            name="text"
-            value=""
-          />
-        </div>
+const HastaEkle = ({ hastalar, setHastalar }) => {
+    const [isim, setIsim] = useState("");
+    const [tarih, setTarih] = useState("");
 
-        <div className="form-control">
-          <label htmlFor="day">Day & Time</label>
+    const yapSubmit = (e) => {
+        e.preventDefault();
+        setHastalar([...hastalar, {
+            id: hastalar.length + 1,
+            text: isim,
+            day: tarih,
+            bittiMi: false,
+            doktorum: "ayse",
+        }]);
+    };
 
-          <input id="day" type="date" name="day" value="" />
-        </div>
-
+    return (
         <div>
-          <button className=" dok btn btn-submit" type="submit">
-            <span style={{ color: "#6a0707" }}>ayse</span> İçin Kayıt Oluştur
-          </button>
+            <form onSubmit={yapSubmit}>
+                <div className="form-control">
+                    <label htmlFor="text">Hasta Bilgileri</label>
+
+                    <input
+                        id="text"
+                        type="text"
+                        placeholder="Add Name"
+                        name="text"
+                        value={isim}
+                        onChange={(e) => setIsim(e.target.value)}
+                    />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor="day">Day & Time</label>
+
+                    <input
+                        id="day"
+                        type="datetime-local"
+                        name="day"
+                        value={tarih}
+                        onChange={(e) => setTarih(e.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <button className=" dok btn btn-submit" type="submit">
+                        <span style={{ color: "#6a0707" }}>ayse</span> İçin Kayıt Oluştur
+                    </button>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default HastaEkle;
