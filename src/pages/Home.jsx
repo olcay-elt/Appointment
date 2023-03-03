@@ -31,22 +31,21 @@ const Home = () => {
         },
     ];
 
-    const [hastalar, setHastalar] = useState(Data)
-    const [doktorlar, setDoktorlar] = useState(initial)
+    const [hastalar, setHastalar] = useState(Data);
+    const [doktorlar, setDoktorlar] = useState(initial);
 
-    const [buton, setButon] = useState(true)
+    const [buton, setButon] = useState(true);
 
     const doktorClick = (id) => {
         if (buton) {
-            setButon(false)
-            // console.log([doktorlar.filter((i) => i.id === id)][0]);
+            setButon(false);
+            //  console.log([doktorlar.filter((i) => i.id === id)][0]);
             setDoktorlar([doktorlar.filter((i) => i.id === id)][0]);
         } else {
-            setButon(true)
-            setDoktorlar(initial)
+            setButon(true);
+            setDoktorlar(initial);
         }
-
-    }
+    };
 
     return (
         <div style={{ display: buton ? "block" : "flex" }}>
@@ -79,15 +78,20 @@ const Home = () => {
                 </header>
 
                 {buton === false && (
-                    <HastaEkle hastalar={hastalar} setHastalar={setHastalar}
+                    <HastaEkle
+                        hastalar={hastalar}
+                        setHastalar={setHastalar}
                         doktorlar={doktorlar}
                     />
                 )}
-
-
             </div>
 
-            <HastaListe hastalar={hastalar} setHastalar={setHastalar} />
+            <HastaListe
+                hastalar={hastalar}
+                setHastalar={setHastalar}
+                doktorlar={doktorlar}
+                buton={buton}
+            />
         </div>
     );
 };
