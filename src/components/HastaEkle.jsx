@@ -3,7 +3,7 @@ import { useState } from "react";
 const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
     const [isim, setIsim] = useState("");
     const [tarih, setTarih] = useState("");
-
+    console.log(doktorlar);
     const yapSubmit = (e) => {
         e.preventDefault();
         setHastalar([...hastalar, {
@@ -45,7 +45,8 @@ const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
 
                 <div>
                     <button className=" dok btn btn-submit" type="submit">
-                        <span style={{ color: "#6a0707" }}>{doktorlar[0].doktor}</span> İçin Kayıt Oluştur
+                        <span style={{ color: "#6a0707" }}>{doktorlar[0].doktor}</span> İçin
+                        Kayıt Oluştur
                     </button>
                 </div>
             </form>
