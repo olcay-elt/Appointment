@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const HastaEkle = ({ hastalar, setHastalar }) => {
+const HastaEkle = ({ hastalar, setHastalar, doktorlar }) => {
     const [isim, setIsim] = useState("");
     const [tarih, setTarih] = useState("");
 
@@ -11,7 +11,7 @@ const HastaEkle = ({ hastalar, setHastalar }) => {
             text: isim,
             day: tarih,
             bittiMi: false,
-            doktorum: "ayse",
+            doktorum: doktorlar[0].doktor,
         }]);
     };
 
@@ -45,7 +45,7 @@ const HastaEkle = ({ hastalar, setHastalar }) => {
 
                 <div>
                     <button className=" dok btn btn-submit" type="submit">
-                        <span style={{ color: "#6a0707" }}>ayse</span> İçin Kayıt Oluştur
+                        <span style={{ color: "#6a0707" }}>{doktorlar[0].doktor}</span> İçin Kayıt Oluştur
                     </button>
                 </div>
             </form>

@@ -37,9 +37,15 @@ const Home = () => {
     const [buton, setButon] = useState(true)
 
     const doktorClick = (id) => {
-        setButon(!buton)
-        // console.log([doktorlar.filter((i) => i.id === id)][0]);
-        setDoktorlar([doktorlar.filter((i) => i.id === id)][0]);
+        if (buton) {
+            setButon(false)
+            // console.log([doktorlar.filter((i) => i.id === id)][0]);
+            setDoktorlar([doktorlar.filter((i) => i.id === id)][0]);
+        } else {
+            setButon(true)
+            setDoktorlar(initial)
+        }
+
     }
 
     return (
@@ -73,7 +79,9 @@ const Home = () => {
                 </header>
 
                 {buton === false && (
-                    <HastaEkle hastalar={hastalar} setHastalar={setHastalar} />
+                    <HastaEkle hastalar={hastalar} setHastalar={setHastalar}
+                        doktorlar={doktorlar}
+                    />
                 )}
 
 
